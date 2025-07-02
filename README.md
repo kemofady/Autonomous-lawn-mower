@@ -31,30 +31,30 @@ A fully autonomous robotic lawn mower designed for precise and efficient grass c
 ```mermaid
 graph TD
     subgraph Sensors
-        A1[RTK GPS]
-        A2[IMU]
-        A3[Encoders]
-        A4[Rain Sensor]
-        A5[LDR (Light Sensor)]
+        RTK_GPS(RTK GPS)
+        IMU(IMU)
+        Encoders(Encoders)
+        RainSensor(Rain Sensor)
+        LDR(Light Sensor)
     end
 
     subgraph Controller
-        B1[Raspberry Pi]
-        B2[Arduino]
+        Pi(Raspberry Pi)
+        Arduino(Arduino)
     end
 
     subgraph Actuation
-        C1[Motor Drivers]
-        C2[Drive Motors]
-        C3[Cutting Blade Motor]
+        MotorDrivers(Motor Drivers)
+        DriveMotors(Drive Motors)
+        BladeMotor(Cutting Blade Motor)
     end
 
-    A1 --> B1
-    A2 --> B1
-    A3 --> B1
-    A4 --> B2
-    A5 --> B2
-    B1 -->|Commands| B2
-    B2 --> C1
-    C1 --> C2
-    C1 --> C3
+    RTK_GPS --> Pi
+    IMU --> Pi
+    Encoders --> Pi
+    RainSensor --> Arduino
+    LDR --> Arduino
+    Pi -->|Control Commands| Arduino
+    Arduino --> MotorDrivers
+    MotorDrivers --> DriveMotors
+    MotorDrivers --> BladeMotor
