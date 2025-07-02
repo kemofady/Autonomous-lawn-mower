@@ -58,6 +58,10 @@ graph TD
     Arduino --> MotorDrivers
     MotorDrivers --> DriveMotors
     MotorDrivers --> BladeMotor
+
+---
+
+
 ## 🚀 Setup Instructions
 
 ### 🔧 Hardware Requirements
