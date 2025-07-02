@@ -118,7 +118,7 @@ source /opt/ros/humble/setup.bash
 # Create and build your workspace
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
-git clone https://github.com/your_username/autonomous-lawn-mower.git
+git clone https://github.com/kemofady/autonomous-lawn-mower.git
 
 cd ~/ros2_ws
 rosdep install --from-paths src --ignore-src -r -y
