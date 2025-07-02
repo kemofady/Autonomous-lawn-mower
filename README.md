@@ -1,19 +1,18 @@
 # 🌿 Autonomous Lawn Mower 🤖
 
-A fully autonomous robotic lawn mower designed for precise and efficient grass cutting using RTK-GPS, IMU, and wheel encoders. This embedded system integrates real-time localization, intelligent decision-making, and robust motor control for seamless operation in outdoor environments.
+A fully autonomous robotic lawn mower designed for precise and efficient grass cutting using **RTK-GPS**, **IMU**, and **wheel encoders**. This embedded system integrates real-time localization, intelligent decision-making, and robust motor control for seamless operation in outdoor environments.
 
 ---
 
-
-#### 🧠 System Overview
+## 🧠 System Overview
 
 ### 📡 Sensors & Localization
-- **RTK GPS Module (LC29HDA)**: Provides centimeter-level accuracy for outdoor navigation
-- **IMU (e.g. MPU6050)**: Supplies real-time orientation feedback
+- **RTK GPS Module (LC29HDA)**: Provides centimeter-level accuracy for outdoor navigation  
+- **IMU (e.g. MPU6050)**: Supplies real-time orientation feedback  
 - **Wheel Encoders**: Measure wheel rotations for motion estimation
 
 ### 🌦️ Environmental Sensors (Handled by Arduino)
-- **Rain Sensor**: Detects precipitation to pause mowing for safety
+- **Rain Sensor**: Detects precipitation to pause mowing for safety  
 - **LDR (Light Dependent Resistor)**: Measures ambient light to avoid operation at dusk or night
 
 ### 🧾 Decision-Making & Control
@@ -26,6 +25,7 @@ A fully autonomous robotic lawn mower designed for precise and efficient grass c
   - Handles low-level motor and blade control
 
 ---
+
 ## 📐 Architecture Diagram
 
 ```mermaid
@@ -58,41 +58,32 @@ graph TD
     Arduino --> MotorDrivers
     MotorDrivers --> DriveMotors
     MotorDrivers --> BladeMotor
-
 ---
 
+🚀 Setup Instructions
+🔧 Hardware Requirements
+Component	Example / Model
+RTK GPS	Quectel LC29HDA
+IMU	MPU6050 / BNO055
+Encoders	Quadrature Encoders
+Rain Sensor	Analog Rain Detection Module
+LDR (Light Sensor)	Any analog LDR module
+Raspberry Pi	Model 3B+ / 4
+Arduino	UNO / Mega
+Motor Drivers	L298N / BTS7960
+💻 Software Requirements
 
-## 🚀 Setup Instructions
+    Arduino IDE
 
-### 🔧 Hardware Requirements
+    Python 3.9+ (for Raspberry Pi scripts)
 
-| Component      | Example / Model           |
-|----------------|---------------------------|
-| RTK GPS        | Quectel LC29HDA           |
-| IMU            | MPU6050 / BNO055          |
-| Encoders       | Quadrature Encoders       |
-| Rain Sensor    | Analog Rain Detection Module |
-| LDR (Light Sensor) | Any analog LDR module    |
-| Raspberry Pi   | Model 3B+ / 4              |
-| Arduino        | UNO / Mega                |
-| Motor Drivers  | L298N / BTS7960           |
+    pyserial (for serial communication)
 
----
+    (Optional) ROS Noetic + Gazebo for simulation and testing
 
-### 💻 Software Requirements
+🔌 Installation
+🚀 Arduino Setup
 
-- [Arduino IDE](https://www.arduino.cc/en/software)
-- Python 3.9+ (for Raspberry Pi scripts)
-- `pyserial` (for serial communication)
-- *(Optional)* ROS Noetic + Gazebo for simulation and testing
-
----
-
-### 🔌 Installation
-
-#### 🚀 Arduino Setup
-
-```bash
 # Flash Arduino control code
 1. Open arduino_code/main.ino in Arduino IDE
 2. Select the correct board and COM port
@@ -137,15 +128,11 @@ python3 log_replay.py
 We welcome all contributions!
 To get started:
 
-    Fork this repository
-
-    Create your feature branch: git checkout -b feature/YourFeature
-
-    Commit your changes: git commit -m "Add new feature"
-
-    Push to the branch: git push origin feature/YourFeature
-
-    Open a Pull Request ✅
+1. Fork this repository
+2. Create your feature branch: git checkout -b feature/YourFeature
+3. Commit your changes: git commit -m "Add new feature"
+4. Push to the branch: git push origin feature/YourFeature
+5. Open a Pull Request ✅
 
 📜 License
 
