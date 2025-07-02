@@ -16,10 +16,11 @@ A fully autonomous robotic lawn mower designed for precise and efficient grass c
 - **LDR (Light Dependent Resistor)**: Measures ambient light to avoid operation at dusk or night
 
 ### 🧾 Decision-Making & Control
-- **Raspberry Pi**:
+- **Raspberry Pi (Ubuntu 22.04)**:
+  - Runs ROS 2 Humble (C++ & Python)
   - Processes GPS, IMU, and encoder data
   - Plans navigation paths and coverage areas
-  - Sends commands to Arduino for execution
+  - Sends commands to Arduino over USB
 - **Arduino**:
   - Reads environmental sensors (rain, LDR)
   - Handles low-level motor and blade control
@@ -54,7 +55,7 @@ graph TD
     Encoders --> Pi
     RainSensor --> Arduino
     LDR --> Arduino
-    Pi -->|Control Commands| Arduino
+    Pi -->|Control Commands via USB| Arduino
     Arduino --> MotorDrivers
     MotorDrivers --> DriveMotors
     MotorDrivers --> BladeMotor
@@ -76,27 +77,81 @@ graph TD
 | Arduino             | UNO / Mega                |
 | Motor Drivers       | L298N / BTS7960           |
 
-### 💻 Software Requirements
-- Arduino IDE
-- Python 3.9+ (for Raspberry Pi scripts)
-- pyserial (for serial communication)
-- (Optional) ROS Noetic + Gazebo for simulation and testing
+#### 💻 Software Requirements
+
+- **Ubuntu 22.04** (on Raspberry Pi)
+- **Arduino IDE**
+- **ROS 2 Humble** (C++ and Python-based nodes)
+- **Gazebo Ignition** (simulation environment)
+- **pyserial** (for USB serial communication between Raspberry Pi and Arduino)
+
+---
 
 ### 🔌 Installation
 
-#### Arduino Setup
-1. Open `arduino_code/main.ino` in Arduino IDE
-2. Select the correct board and COM port
+#### 🚀 Arduino Setup
+
+1. Open `arduino_code/main.ino` in Arduino IDE  
+2. Select the correct board and COM port  
 3. Upload the sketch
 
-#### Raspberry Pi Setup
+---
 
-bash
-# Install dependencies and run controller
-sudo apt-get update
-sudo apt-get install python3-pip
+#### 🐍 Raspberry Pi Setup (Ubuntu + Python Scripts)
+
+```bash
+# On Raspberry Pi with Ubuntu 22.04
+sudo apt update
+sudo apt install python3-pip
 pip3 install pyserial
 
 cd rpi_code/
-python3 mower_controller.py    
+python3 mower_controller.py
+```
 
+#### 🤖 ROS 2 (Humble) Setup
+
+```bash
+# Source ROS 2 Humble
+source /opt/ros/humble/setup.bash
+
+# Create and build your workspace
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone https://github.com/your_username/autonomous-lawn-mower.git
+
+cd ~/ros2_ws
+rosdep install --from-paths src --ignore-src -r -y
+colcon build --symlink-install
+
+# Source the workspace
+source install/setup.bash
+```
+#### 📦 Future Extensions
+
+- ✅ Obstacle avoidance using stereo vision or LiDAR  
+- ✅ Full integration with **ROS 2 Humble**  
+- ✅ Coverage path planning using boustrophedon or spiral strategies  
+- ✅ Mobile app interface for remote monitoring  
+- ✅ Enhanced Gazebo Ignition simulation with physical terrain modeling  
+- ✅ OTA firmware updates and remote diagnostics
+
+---
+
+### 🤝 Contributing
+
+We welcome all contributions!  
+To get started:
+
+```bash
+1. Fork this repository
+2. Create your feature branch: git checkout -b feature/YourFeature
+3. Commit your changes: git commit -m "Add new feature"
+4. Push to the branch: git push origin feature/YourFeature
+5. Open a Pull Request ✅
+```
+### 🙌 Maintainer
+
+**Kareem Fady**  
+🔗 (https://github.com/kemofady)  
+📧 kareemfady111@gmail.com
