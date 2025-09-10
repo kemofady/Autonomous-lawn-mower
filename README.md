@@ -8,7 +8,7 @@ A fully autonomous robotic lawn mower designed for precise and efficient grass c
 
 ### 📡 Sensors & Localization
 - **RTK GPS Module (LC29HDA)**: Provides centimeter-level accuracy for outdoor navigation  
-- **IMU (e.g. MPU6050)**: Supplies real-time orientation feedback  
+- **IMU (MPU6050)**: Supplies real-time orientation feedback  
 - **Wheel Encoders**: Measure wheel rotations for motion estimation
 
 ### 🌦️ Environmental Sensors (Handled by Arduino)
